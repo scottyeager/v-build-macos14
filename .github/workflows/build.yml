@@ -1,0 +1,37 @@
+name: Test prebuilt binaries
+
+on:
+  workflow_dispatch
+
+  prebuilt-macos-arm64:
+    ## macos-14 is a m1 runner
+    runs-on: macos-14
+    timeout-minutes: 5
+    steps:
+      - name: Download V
+        run: |
+          .github/workflows/retry.sh wget https://github.com/vlang/v/releases/latest/download/v_macos_arm64.zip
+          unzip v_macos_arm64.zip
+          cd v
+          ./v -version
+      - name: Test V
+        run: |
+          cd v
+          ./v -cc tcc run examples/hello_world.v
+          ./v -showcc -gc none -cc tcc -no-retry-compilation run examples/hello_world.v
+
+  compiled-macos-arm64:
+    ## macos-14 is a m1 runner
+    runs-on: macos-14
+    timeout-minutes: 5
+    steps:
+      - name: Download V
+        run: |
+          git clone https://github.com/vlang
+          cd v
+          make
+      - name: Test V
+        run: |
+          cd v
+          ./v -cc tcc run examples/hello_world.v
+          ./v -showcc -gc none -cc tcc -no-retry-compilation run examples/hello_world.v
