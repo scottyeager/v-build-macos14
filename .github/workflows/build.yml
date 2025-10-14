@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Download V
         run: |
-          .github/workflows/retry.sh wget https://github.com/vlang/v/releases/latest/download/v_macos_arm64.zip
+          wget https://github.com/vlang/v/releases/latest/download/v_macos_arm64.zip
           unzip v_macos_arm64.zip
           cd v
           ./v -version
@@ -27,7 +27,7 @@ jobs:
     steps:
       - name: Download V
         run: |
-          git clone https://github.com/vlang
+          git clone https://github.com/vlang/v
           cd v
           make
       - name: Test V
