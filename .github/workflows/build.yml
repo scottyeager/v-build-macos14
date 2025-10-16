@@ -1,4 +1,4 @@
-name: Test prebuilt binaries
+name: Test on macos-14 runner
 
 on: workflow_dispatch
 
