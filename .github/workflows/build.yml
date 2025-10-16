@@ -25,9 +25,10 @@ jobs:
     runs-on: macos-14
     timeout-minutes: 5
    
-    - name: Checkout code
-      uses: actions/checkout@v4 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 
+        
       - name: Download V
         run: |
           git clone https://github.com/vlang/v
