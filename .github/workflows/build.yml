@@ -43,4 +43,4 @@ jobs:
           ./v -showcc -gc none -cc tcc -no-retry-compilation run examples/hello_world.v
           
       - name: Run example
-        run: v --cc clang example.v
+        run: v -cc clang example.v
