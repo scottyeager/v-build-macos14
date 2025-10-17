@@ -19,5 +19,10 @@ jobs:
           make
           sudo ./v symlink
           
-      - name: Run example
-        run: v -cc clang example.v
+      - name: Run fetch example
+        run: |
+          cd v/examples
+          v -cc tcc fetch.v
+          
+#      - name: Run example
+#        run: v -cc clang example.v
